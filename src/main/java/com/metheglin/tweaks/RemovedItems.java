@@ -2,8 +2,8 @@ package com.metheglin.tweaks;
 
 import java.util.Set;
 
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -26,9 +26,9 @@ public final class RemovedItems {
 	}
 
 	static void init() {
-		ItemGroupEvents.MODIFY_ENTRIES_ALL.register((group, entries) -> {
-			entries.getDisplayStacks().removeIf(stack -> REMOVED_ITEMS.contains(stack.getItem()));
-			entries.getSearchTabStacks().removeIf(stack -> REMOVED_ITEMS.contains(stack.getItem()));
+		CreativeModeTabEvents.MODIFY_OUTPUT_ALL.register((tab, output) -> {
+			output.getDisplayStacks().removeIf(stack -> REMOVED_ITEMS.contains(stack.getItem()));
+			output.getSearchTabStacks().removeIf(stack -> REMOVED_ITEMS.contains(stack.getItem()));
 		});
 
 		UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
