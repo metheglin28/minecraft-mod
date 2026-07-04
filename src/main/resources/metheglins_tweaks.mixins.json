@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "com.metheglin.tweaks.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"EndPortalBlockMixin",
+		"NetherPortalBlockMixin",
+		"PortalShapeMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
